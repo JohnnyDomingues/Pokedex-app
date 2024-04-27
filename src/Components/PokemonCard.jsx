@@ -1,7 +1,12 @@
-function PokemonCard () {
+import pokemonList from "./data/PokemonsList";
+import PropTypes from 'prop-types'; // Importer PropTypes
 
-  const pokemon = pokemonList[1];
-console.log(pokemon.imgSrc ? true : false);
+function PokemonCard ({ index }) {  // Recevoir l'index comme prop
+
+  const pokemon = pokemonList[index]; // Utiliser l'index pour accéder au bon Pokémon
+
+// console.log(pokemon.imgSrc ? true : false);
+
   return  (
 
     <figure className="card">
@@ -13,20 +18,11 @@ console.log(pokemon.imgSrc ? true : false);
   )
 }
 
-const pokemonList = [
-  {
-    name: "bulbasaur",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  },
-  {
-    name: "mew",
-    
-  },
-]
+PokemonCard.propTypes = { // Définir la validation des props
+  index: PropTypes.number.isRequired, // index doit être un nombre et est requis
+};
 
 export default PokemonCard 
-
 
 /** 
  * condition ? exprSiVrai : exprSiFaux;
